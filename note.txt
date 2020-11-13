@@ -1,0 +1,8 @@
+# use with https://github.com/gpakosz/.tmux
+
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+
+Then replace the git files with the local ones.
