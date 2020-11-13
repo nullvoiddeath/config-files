@@ -1,19 +1,27 @@
-# If you come from bash you might have to change your $PATH.
-PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
-POWERLEVEL9K_MODE="nerdfont-complete"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+            tmux attach -t default || tmux new -s default
+fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export LANG="en_US.UTF-8"
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nullvoiddeath/.oh-my-zsh"
-ZSH_THEME=powerlevel10k/powerlevel10k
+export PATH="$PATH:/home/nullvoiddeath/Desktop/Work/flutter/flutter/bin"
+export PATH="$PATH:/home/nullvoiddeath/.gem/ruby/2.7.0/bin"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME=spaceship
+#ZSH_THEME=powerlevel10k/powerlevel10k
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -46,7 +54,7 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -72,8 +80,7 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+plugins=(git zsh-z zsh-autosuggestions zsh-syntax-highlighting tmux)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -100,18 +107,15 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias ohmyzsh="mate ~/.oh-my-zsh
+alias pacout="sudo pacman -Rns"
+alias pacin="sudo pacman -S"
+alias pacupdate="sudo pacman -Syuu"
+alias batstat="sudo tlp-stat | tail -18"
+alias vmprep="sudo modprobe vmw_vmci"
+#source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-
-
-#POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶  "
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-export LC_CTYPE="en_US.UTF-8"
-POWERLEVEL9K_CUSTOM_ARCH_ICON="echo $'\uf303'"
-POWERLEVEL9K_CUSTOM_ARCH_ICON_BACKGROUND=000
-POWERLEVEL9K_CUSTOM_ARCH_ICON_FOREGROUND=015
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_arch_icon context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(battery ip)
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ZSH_TMUX_AUTOSTART='true'

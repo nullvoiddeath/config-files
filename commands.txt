@@ -1,0 +1,3 @@
+# tdrop for drop down terminal (with alacritty)
+
+tdrop -t  -a -m -h 45% -s dropdown alacritty --config-file alacritty_tdrop.yml
